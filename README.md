@@ -4,7 +4,7 @@ author:
 title: "textmining: A Python Script for Text Mining and Analysis"
 ---
 
-[^1]
+[^1] [^2]
 
 # Abstract {#abstract .unnumbered}
 
@@ -164,7 +164,7 @@ interpretations.
 
 In this section we will see how to process certain data file
 *scopus.csv*. This file has a few abstracts close to 108 obtained from a
-popular data base called Scopus.[^2] The file consists of various
+popular data base called Scopus.[^3] The file consists of various
 columns showing information related to research articles.
 
     >>> import os
@@ -172,7 +172,7 @@ columns showing information related to research articles.
     'C:\\Program Files\\Python311'
     >>> os.chdir('use your project directory...')
 
-First, it is always better to be in project directory. [^3] The function
+First, it is always better to be in project directory. [^4] The function
 `importAbstracts()` might be useful for retrieval of data files. This
 function also takes care of data file format.
 
@@ -214,7 +214,7 @@ factors. There are 4 conjugates (or morphemes) for factor `covid`.
     dtype: float64
 
 `makeRowSums()` returns a *pandas series* object. The summaries can be
-calculated using `.describe()` method. [^4] The `describe()` method
+calculated using `.describe()` method. [^5] The `describe()` method
 applied to the `covrowsums` Series indicates that it contains 1539
 non-null entries with a mean value of approximately 1.910 and a standard
 deviation of around 1.712. The data ranges from a minimum of 0 to a
@@ -253,7 +253,7 @@ the analysis of sparse text data. Understanding and addressing sparsity
 are critical for extracting meaningful insights and building accurate
 models from text mining data sets. The functions `makeRowSums()`,
 `subsetData(`) and `sparcityDensity()` are useful to make dense data
-sets. [^5]
+sets. [^6]
 
     >>> deaths.columns
     Index(['death', 'deaths'], dtype='object')
@@ -429,7 +429,7 @@ dependent variables, as evidenced by the low Wilks' Lambda values and
 high F-values, all with p-values of 0.0000. The substantial F-value for
 the intercept suggests it explains a considerable portion of the
 variability, whereas the vaccination variable, while significant, has a
-relatively smaller impact. [^6]
+relatively smaller impact. [^7]
 
 ## PCA
 
@@ -449,7 +449,7 @@ assuming n-components solution.
 
 Let's try performing PCA for drawing inferences on status of number of
 people died, recovered from Covid-19 from the data. Right now it is
-possible to perform PCA for 2 component solution.[^7]
+possible to perform PCA for 2 component solution.[^8]
 
     >>> deaths = makeConjugates(abstracts, 'death')
     >>> recovered = makeConjugates(abstracts, 'recover')
@@ -704,18 +704,22 @@ processing. Retrieved from https://textblob.readthedocs.io/
     GITAM (Deemed to be) University, Visakhapatnam 530045, Andhra
     Pradesh, India. +91-9848396972, <dr.m.kamakshaiah@gmail.com>
 
-[^2]: <https://www.scopus.com/search/form.uri?display=basic#basic>
+[^2]: Musunuru, K. (2024). `textmining`: A Python Script for Text Mining
+    and Analysis. Available at
+    <https://github.com/Kamakshaiah/text-mining/blob/main/textmining.pdf>
 
-[^3]: May not be a requirement. Any directory is sufficient enough but
+[^3]: <https://www.scopus.com/search/form.uri?display=basic#basic>
+
+[^4]: May not be a requirement. Any directory is sufficient enough but
     it might a bit tough while working with imports.
 
-[^4]: The method is available in Python pandas library.
+[^5]: The method is available in Python pandas library.
     <https://pandas.pydata.org/docs/user_guide/index.html>.
 
-[^5]: Use `help() function to know about functions.`
+[^6]: Use `help() function to know about functions.`
 
-[^6]: But as it was mentioned earlier; results needs cautious
+[^7]: But as it was mentioned earlier; results needs cautious
     interpretation due to sparse nature of data.
 
-[^7]: The script still evolving. There may be a provision for
+[^8]: The script still evolving. There may be a provision for
     n-component analysis in future developments.
