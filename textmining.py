@@ -14,7 +14,7 @@ def importAbstracts(path):
     # data transformation
     vec = CountVectorizer()
     X = vec.fit_transform(abstracts)
-    df = pd.DataFrame(X.toarray(), columns=vec.get_feature_names())
+    df = pd.DataFrame(X.toarray(), columns=vec.get_feature_names_out())
     return df
 
 ##df[~(df == 0). all(axis=1)]
@@ -130,6 +130,23 @@ def concatenateDataSets(*args):
     df = pd.concat(frames, axis=1)
     return df
 
+def factors(x):
+    ''' helper function to factorize a number '''
+    y = []
+    for i in range(1, x + 1):
+        if x % i == 0:
+            y.append(i)
+    return(y)
+           
+def plotMultiVarHist(dataf, n=None, m=None):
+    ''' Plots histogram for multivariate data set '''
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    fig, axis = plt.subplots(m, n)
+    dataf.hist()
+    plt.show()
+    
+
 def makeTargetVariable(df1, df2, names = [1, 2, 3]):
     ''' Makes target variable for principal component analysis '''
 
@@ -147,7 +164,13 @@ def makeTargetVariable(df1, df2, names = [1, 2, 3]):
             target.append(names[2])
 
     return pd.Series(target, name= 'target')
-                    
+
+def ManovaAnal(df, fml=None):
+    ''' MANOVA on pandas data frame '''
+    from statsmodels.multivariate.manova import MANOVA
+    fit = MANOVA.from_formula(fml, data=df)
+    print(fit.mv_test())
+    
 def PCA(data, target):
 
     ''' https://builtin.com/machine-learning/pca-in-python
@@ -198,7 +221,7 @@ if __name__ == '__main__':
     
     # IMPORT DATA
     
-    abstracts = importAbstracts('D:\Research\PAPERS\covid19\policy innovation\scopus.csv')
+    abstracts = importAbstracts('D:\\Work\python_work\\text-mining-main\\text-mining-main\\sample data\\scopus.csv')
 ##    print(abstracts.head())
 ##    print(len(abstracts.columns))
 ##    print(abstracts[['technology', 'innovation']])
