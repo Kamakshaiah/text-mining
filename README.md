@@ -6,7 +6,7 @@ title: "textmining: A Python Script for Text Mining and Analysis"
 
 [^1] [^2]
 
-# Abstract {#abstract .unnumbered}
+# Abstract
 
 Python offers extensive libraries for text mining and natural language
 processing (NLP), and few prominent libraries such as *NLTK, SpaCy,
